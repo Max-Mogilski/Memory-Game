@@ -3,18 +3,18 @@ const popupMenu = document.querySelector(".game-menu");
 const score = document.querySelector(".score");
 const endGamePopup = document.querySelector(".game-end");
 const images = [
-	"/assets/img/18072173_011_a82d.jpeg",
-	"/assets/img/21144782_020_a433.jpeg",
-	"/assets/img/32764908_005_3a31.jpeg",
-	"/assets/img/61546582_001_9d2b.jpeg",
-	"/assets/img/66546318_005_890a.jpeg",
-	"/assets/img/81941066_016_0cb2.jpeg",
-	"/assets/img/18072173_011_a82d.jpeg",
-	"/assets/img/21144782_020_a433.jpeg",
-	"/assets/img/32764908_005_3a31.jpeg",
-	"/assets/img/61546582_001_9d2b.jpeg",
-	"/assets/img/66546318_005_890a.jpeg",
-	"/assets/img/81941066_016_0cb2.jpeg",
+	"assets/img/18072173_011_a82d.jpeg",
+	"assets/img/21144782_020_a433.jpeg",
+	"assets/img/32764908_005_3a31.jpeg",
+	"assets/img/61546582_001_9d2b.jpeg",
+	"assets/img/66546318_005_890a.jpeg",
+	"assets/img/81941066_016_0cb2.jpeg",
+	"assets/img/18072173_011_a82d.jpeg",
+	"assets/img/21144782_020_a433.jpeg",
+	"assets/img/32764908_005_3a31.jpeg",
+	"assets/img/61546582_001_9d2b.jpeg",
+	"assets/img/66546318_005_890a.jpeg",
+	"assets/img/81941066_016_0cb2.jpeg",
 	// "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
 	// "https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
 	// "https://images.unsplash.com/photo-1561948955-570b270e7c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
@@ -190,4 +190,8 @@ document.querySelector(".back-btn").addEventListener("click", () => {
 	setTimeout(() => {
 		endGamePopup.style.display = "none";
 	}, 1000);
+});
+document.querySelector(".reset").addEventListener("click", () => {
+	endGamePopup.style.display = "none";
+	new Game();
 });
