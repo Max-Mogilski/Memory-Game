@@ -67,7 +67,6 @@ class Timer {
 		let minutes = 0;
 		const interval = setInterval(function () {
 			if (isTimerRunning === false) {
-				console.log(isTimerRunning);
 				clearInterval(interval);
 				return;
 			}
@@ -127,7 +126,6 @@ class Game {
 			isTimerRunning = true;
 		}
 		this.timer.start();
-		console.log("Game has started!");
 
 		// Comparing background path of two selected tiles
 		function compareTile(previous, current) {
@@ -149,7 +147,6 @@ class Game {
 
 		function clickHandler(e) {
 			if (ableToClick && e.target.classList.contains("placeholder")) {
-				console.log(e.target);
 				const tile = e.target.parentElement;
 				if (!pairToCheck[0]) {
 					pairToCheck.push(tile);
@@ -157,7 +154,6 @@ class Game {
 					pairToCheck.push(tile);
 					compareTile(...pairToCheck);
 					if (checkedPairs >= tiles.length) {
-						console.log("Success! You won!");
 						this.end();
 						checkedPairs = 0;
 					}
