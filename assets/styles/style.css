@@ -46,7 +46,6 @@ main {
 	align-items: center;
 	flex-wrap: wrap;
 	width: 60%;
-	height: 70%;
 	background-color: #fff;
 	border-radius: 10px;
 	padding: 20px;
@@ -54,7 +53,7 @@ main {
 .tile {
 	position: relative;
 	width: 20%;
-	height: 30%;
+	height: 150px;
 	border: solid 3px rgb(63, 94, 251);
 	border-radius: 8px;
 	margin: 5px 10px;
@@ -243,6 +242,12 @@ main {
 	cursor: pointer;
 }
 
+.mobile {
+	display: none;
+	font-size: 3rem;
+	font-weight: bold;
+}
+
 @keyframes bgc-animation {
 	from {
 		background-position: left;
@@ -251,7 +256,22 @@ main {
 		background-position: right;
 	}
 }
-@media only screen and (max-width: 600px) {
-	.game-menu {
+@media (min-width: 600px) {
+	.tile {
+		height: 70px;
+	}
+}
+@media (orientation: portrait) {
+	main {
+		display: none;
+	}
+	.mobile {
+		display: block;
+		text-align: center;
+	}
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
