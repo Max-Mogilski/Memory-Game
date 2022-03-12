@@ -2,6 +2,11 @@ const tiles = document.querySelectorAll(".tile");
 const popupMenu = document.querySelector(".game-menu");
 const score = document.querySelector(".score");
 const endGamePopup = document.querySelector(".game-end");
+const leaderboardPopup = document.querySelector(".score-board");
+const leaderBoardPopupLI = leaderboardPopup.querySelectorAll("li");
+const recordMessage = document.querySelector(".record-info");
+const recordScoreInfo = document.querySelector(".record-score");
+const gameData = JSON.parse(localStorage.getItem("gameData"));
 const images = [
 	"assets/img/18072173_011_a82d.jpeg",
 	"assets/img/21144782_020_a433.jpeg",
@@ -28,11 +33,75 @@ const images = [
 	// "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
 	// "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
 ];
+const scoreBoard = gameData ? [...gameData] : [];
 const pairToCheck = [];
 let checkedPairs = 0;
 let ableToClick = true;
 let isEventCreated = false;
 let isTimerRunning = true;
+let currentScore = 0;
+class Leaderboard {
+	constructor() {
+		console.log("Making new leaderboard");
+		this.renderLeaderboard();
+	}
+	sortLeaderBoard() {
+		scoreBoard.sort(function (a, b) {
+			if (a > b) return 1;
+			if (a < b) return -1;
+			return 0;
+		});
+	}
+	saveLeaderboard() {
+		const scoreToLocalStorage = [];
+		for (let i = 0; i < 5; i++) {
+			scoreToLocalStorage.push(scoreBoard[i]);
+		}
+		localStorage.setItem("gameData", JSON.stringify(scoreToLocalStorage));
+	}
+	loadLeaderboard() {
+		if (gameData) {
+		}
+	}
+	renderLeaderboard() {
+		this.loadLeaderboard();
+		let scoreMin = 0;
+		let scoreSec = 0;
+		for (let i = 0; i < leaderBoardPopupLI.length; i++) {
+			if (scoreBoard[i]) {
+				if (scoreBoard[i] >= 60) {
+					scoreMin = scoreBoard[i] / 60;
+					scoreSec = scoreBoard[i] % 60;
+				} else {
+					scoreSec = scoreBoard[i];
+					scoreMin = 0;
+				}
+				if (scoreMin < 10) {
+					scoreMin = "0" + scoreMin;
+				}
+				if (scoreSec < 10) {
+					scoreSec = "0" + scoreSec;
+				}
+				leaderBoardPopupLI[i].textContent = `${scoreMin}:${scoreSec}`;
+			}
+		}
+	}
+	setLeaderboard() {
+		let shouldAdd = true;
+		if (scoreBoard[0]) {
+			scoreBoard.forEach((score) => {
+				if (score === currentScore) {
+					shouldAdd = false;
+				}
+			});
+		}
+		if (shouldAdd) {
+			scoreBoard.push(currentScore);
+		}
+		this.sortLeaderBoard();
+		this.saveLeaderboard();
+	}
+}
 
 // Fisher–Yates Shuffle Algorithm
 function shuffle(array) {
@@ -93,9 +162,20 @@ class Timer {
 		}, 1000);
 	}
 	stop() {
+		currentScore = +this.secondScore + +this.minutesScore * 60;
+		if (currentScore < scoreBoard[0] || !scoreBoard[0]) {
+			recordMessage.textContent = "New record!";
+			recordScoreInfo.textContent = "";
+		}
+		if (currentScore >= scoreBoard[0]) {
+			recordMessage.textContent = "Personal best:";
+			recordScoreInfo.textContent = leaderBoardPopupLI[0].textContent;
+		}
 		score.textContent = `${this.minutesScore}:${this.secondScore}`;
 		endGamePopup.style.display = "block";
 		isTimerRunning = false;
+		leaderboard.setLeaderboard();
+		leaderboard.renderLeaderboard();
 	}
 }
 
@@ -176,6 +256,7 @@ class Game {
 		setTimeout(this.timer.stop, 0);
 	}
 }
+const leaderboard = new Leaderboard();
 document.getElementById("start-btn").addEventListener("click", () => {
 	new Game();
 	popupMenu.classList.toggle("hide");
@@ -190,4 +271,10 @@ document.querySelector(".back-btn").addEventListener("click", () => {
 document.querySelector(".reset").addEventListener("click", () => {
 	endGamePopup.style.display = "none";
 	new Game();
+});
+document.getElementById("leaderboard").addEventListener("click", () => {
+	leaderboardPopup.classList.toggle("hide");
+});
+document.querySelector(".score-board-back").addEventListener("click", () => {
+	leaderboardPopup.classList.toggle("hide");
 });
