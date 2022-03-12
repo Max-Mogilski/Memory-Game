@@ -5,8 +5,15 @@
 }
 
 body {
+	width: 100vw;
+	height: 100vh;
+	font-family: Arial, Helvetica, sans-serif;
+	overflow: hidden;
+}
+main {
+	position: absolute;
 	width: 100%;
-	min-height: 100vh;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -18,7 +25,6 @@ body {
 		rgba(63, 94, 251, 1) 11%,
 		rgba(152, 14, 181, 1) 100%
 	);
-	font-family: Arial, Helvetica, sans-serif;
 	overflow: hidden;
 }
 .timer {
@@ -39,8 +45,8 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	width: 60vw;
-	height: 70vh;
+	width: 60%;
+	height: 70%;
 	background-color: #fff;
 	border-radius: 10px;
 	padding: 20px;
@@ -70,14 +76,12 @@ body {
 	z-index: 10;
 }
 .game-menu {
+	width: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
 	z-index: 10;
 	background: linear-gradient(
 		45deg,
@@ -113,12 +117,13 @@ body {
 .hide {
 	/* animation: hide 1s both ease; */
 	transition: transform 1s;
+	display: none;
 	transform: translate(100%);
 }
 .game-end {
 	position: absolute;
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	display: none;
 }
 .shadow {
@@ -189,10 +194,8 @@ body {
 }
 .score-board {
 	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -246,5 +249,9 @@ body {
 	}
 	to {
 		background-position: right;
+	}
+}
+@media only screen and (max-width: 600px) {
+	.game-menu {
 	}
 }
