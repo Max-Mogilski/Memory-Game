@@ -327,9 +327,9 @@ main {
 		padding: 0 1rem 0.5rem 1rem;
 	}
 }
-@media all and (max-width: 750px) {
+@media all and (max-height: 350px) {
 	.tile {
-		height: 70px;
+		height: 50px;
 	}
 }
 @media all and (max-height: 400px) {
