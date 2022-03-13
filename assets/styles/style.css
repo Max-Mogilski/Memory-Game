@@ -327,14 +327,15 @@ main {
 		padding: 0 1rem 0.5rem 1rem;
 	}
 }
-@media all and (max-height: 350px) {
-	.tile {
-		height: 50px;
-	}
-}
 @media all and (max-height: 400px) {
 	.tile {
 		height: 80px;
 		margin: 2.5px;
+	}
+}
+
+@media all and (max-height: 350px) {
+	.tile {
+		height: 60px;
 	}
 }
