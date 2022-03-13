@@ -321,4 +321,7 @@ main {
 		margin: 0;
 		font-weight: 300;
 	}
+	.info-options {
+		padding: 0 1rem 0.5rem 1rem;
+	}
 }
