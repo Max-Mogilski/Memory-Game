@@ -35,7 +35,7 @@ const images = [
 ];
 const scoreBoard = gameData ? [...gameData] : [];
 const pairToCheck = [];
-let checkedPairs = 0;
+let checkedPairs = 12;
 let ableToClick = true;
 let isEventCreated = false;
 let isTimerRunning = true;
