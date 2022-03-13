@@ -35,7 +35,7 @@ const images = [
 ];
 const scoreBoard = gameData ? [...gameData] : [];
 const pairToCheck = [];
-let checkedPairs = 12;
+let checkedPairs = 0;
 let ableToClick = true;
 let isEventCreated = false;
 let isTimerRunning = true;
@@ -52,6 +52,7 @@ class Leaderboard {
 			return 0;
 		});
 	}
+	resetLeaderboard() {}
 	saveLeaderboard() {
 		const scoreToLocalStorage = [];
 		for (let i = 0; i < 5; i++) {
