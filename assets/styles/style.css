@@ -270,7 +270,7 @@ main {
 	}
 }
 
-@media all and (max-width: 700px) {
+@media all and (max-width: 900px) {
 	.tile {
 		height: 70px;
 		margin: 2.5px;
