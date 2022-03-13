@@ -270,10 +270,10 @@ main {
 	}
 }
 
-@media all and (max-width: 900px) {
+@media all and (max-width: 1000px) {
 	.tile {
-		height: 70px;
-		margin: 2.5px;
+		height: 100px;
+		margin: 5px;
 	}
 	.score-board-back {
 		padding: 1rem;
@@ -290,12 +290,14 @@ main {
 	}
 	.timer {
 		width: 100%;
+		min-height: 20%;
 		font-size: 3rem;
 		margin: 0;
 		border-radius: 0;
 	}
 	.board {
 		width: 100%;
+		min-height: 80%;
 		border-radius: 0;
 		padding: 0;
 	}
@@ -323,5 +325,16 @@ main {
 	}
 	.info-options {
 		padding: 0 1rem 0.5rem 1rem;
+	}
+}
+@media all and (max-width: 750px) {
+	.tile {
+		height: 70px;
+	}
+}
+@media all and (max-height: 400px) {
+	.tile {
+		height: 80px;
+		margin: 2.5px;
 	}
 }
