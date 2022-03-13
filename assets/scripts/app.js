@@ -55,7 +55,9 @@ class Leaderboard {
 	saveLeaderboard() {
 		const scoreToLocalStorage = [];
 		for (let i = 0; i < 5; i++) {
-			scoreToLocalStorage.push(scoreBoard[i]);
+			if (scoreBoard[i]) {
+				scoreToLocalStorage.push(scoreBoard[i]);
+			}
 		}
 		localStorage.setItem("gameData", JSON.stringify(scoreToLocalStorage));
 	}
